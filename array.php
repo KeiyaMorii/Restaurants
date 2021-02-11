@@ -1,14 +1,13 @@
 <?php
-$even_num = [];
-$odd_num = [];
-
-function sort_number($num){
-    global $even_num, $odd_num;
-
-    if($num % 2 == 0){
-        array_push($even_num, $num);
+for($i = 1; $i <= 30; $i++){
+    if($i % 15 == 0){
+        print("FizzBuzz"."<br />");
+    } elseif($i % 3 == 0){
+        print("Fizz"."<br />");
+    } elseif($i % 5 == 0){
+        print("Buzz"."<br />");
     } else {
-        array_push($odd_num, $num);
+        print($i."\n");
     }
 }
 ?>
