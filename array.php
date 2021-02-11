@@ -1,14 +1,8 @@
 <?php
-$file_list = [];
-function add_list($name){
-    global $file_list;
-    $file_name = $name.".php";
-    array_push($file_list, $file_name);
+function check($num){
+    if($num == 42){
+        print("Answer to the Ultimate Question of Life, the Universe, and Everything");
+    }
 }
-
-add_list("function");
-var_dump($file_list);
-
-add_list("hello");
-var_dump($file_list);
+check(42);
 ?>
