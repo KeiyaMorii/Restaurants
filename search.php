@@ -1,11 +1,17 @@
 <?php
 function write_data_to_csv(){
+
     $restaurants = [];
     $response = "hugahuga";
 
-    return var_dump($restaurants);
+    if(isset($response["error"])){
+        return print("エラーが発生しました！");
+    }
+
+    return print_r($restaurants);
 }
 
 
 write_data_to_csv();
+
 ?>
