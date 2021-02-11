@@ -1,8 +1,5 @@
 <?php
-$numlist = ["one", "two", "three"];
-print($numlist[1]."<br />");
-
-$stringlist = [];
-array_push($stringlist, "samurai");
-print($stringlist[0]);
+$dic = ["x"=>10, "y"=>20];
+$dic["y"] = 40;
+var_dump($dic);
 ?>

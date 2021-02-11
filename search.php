@@ -1,4 +1,4 @@
 <?php
-$restaurants = "hogehoge";
+$restaurants = [];
 $response = "hugahuga";
 ?>
