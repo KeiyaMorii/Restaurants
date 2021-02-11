@@ -1,13 +1,28 @@
 <?php
-for($i = 1; $i <= 30; $i++){
-    if($i % 15 == 0){
-        print("FizzBuzz"."<br />");
-    } elseif($i % 3 == 0){
-        print("Fizz"."<br />");
-    } elseif($i % 5 == 0){
-        print("Buzz"."<br />");
-    } else {
-        print($i."\n");
+# Carというクラスを作成する
+class Car
+{
+    static $class_name = "Car";
+
+    function init(){
+        $this->name = "";
+    }
+
+    public function show() {
+        print($this->name."\n");
     }
 }
+# Carクラスのインスタンスを作成する
+$car = new Car();
+
+# Carのインスタンス変数nameにセダンという文字列を格納する
+$car->name = "セダン";
+
+# Carのメソッドであるshow()を実行する
+$car->show();
+# ターミナルにはセダンと表示される
+
+# Carクラス内にあるクラス変数$class_nameをターミナルに表示する
+print(Car::$class_name);
+# ターミナルにはCarと表示される
 ?>
