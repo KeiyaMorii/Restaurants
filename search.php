@@ -4,7 +4,7 @@ require 'vendor/autoload.php';
 use GuzzleHttp\Client;
 
 # 初期設定
-$KEYID = "f211556d1910660f331437a964b4939f";
+$KEYID = ;
 $HIT_PER_PAGE = 100;
 $PREF = "PREF13";
 $FREEWORD_CONDITION = 1;
@@ -14,7 +14,7 @@ $PARAMS = array("keyid"=> $KEYID, "hit_per_page"=>$HIT_PER_PAGE, "pref"=>$PREF, 
 
 function write_data_to_csv($params){
 
-    $restaurants = [];
+    $restaurants = [["名称","住所","営業日","電話番号"]];
     $client = new Client();
     try{
         $json_res = $client->request('GET', "https://api.gnavi.co.jp/RestSearchAPI/v3/", ['query' => $params])->getBody();
@@ -29,11 +29,15 @@ function write_data_to_csv($params){
 
     
     foreach($response["rest"] as &$restaurant){
-        $restaurant_name = $restaurant["name"];
-        $restaurants[] = $restaurant_name;
+        $rest_info = [$restaurant["name"],$restaurant["address"],$restaurant["opentime"],$restaurant["tel"]];
+        $restaurants[] = $rest_info;
     }
     $handle = fopen("restaurants_list.csv", "wb");
-    fputcsv($handle, $restaurants);
+
+    foreach ($restaurants as $values){
+        fputcsv($handle, $values);
+    }
+
     fclose($handle);
     return print_r($restaurants);
 }
