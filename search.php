@@ -4,7 +4,7 @@ require 'vendor/autoload.php';
 use GuzzleHttp\Client;
 
 # 初期設定
-$KEYID = ;
+$KEYID = getenv('GRNB_ACCESS_KEY');
 $HIT_PER_PAGE = 100;
 $PREF = "PREF13";
 $FREEWORD_CONDITION = 1;
