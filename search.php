@@ -4,11 +4,11 @@ require 'vendor/autoload.php';
 use GuzzleHttp\Client;
 
 # 初期設定
-$KEYID = getenv('GRNB_ACCESS_KEY');
+$KEYID = "";
 $HIT_PER_PAGE = 100;
 $PREF = "PREF13";
 $FREEWORD_CONDITION = 1;
-$FREEWORD = "渋谷駅";
+$FREEWORD = "渋谷駅 " . $_POST['search'];
 
 $PARAMS = array("keyid"=> $KEYID, "hit_per_page"=>$HIT_PER_PAGE, "pref"=>$PREF, "freeword_condition"=>$FREEWORD_CONDITION, "freeword"=>$FREEWORD);
 
@@ -29,7 +29,7 @@ function write_data_to_csv($params){
 
     
     foreach($response["rest"] as &$restaurant){
-        $rest_info = [$restaurant["name"],$restaurant["address"],$restaurant["opentime"],$restaurant["tel"]];
+        $rest_info = [$restaurant["name"],$restaurant["address"],$restaurant["opentime"],$restaurant["tel"],$restaurant["image_url"]["shop_image1"]];
         $restaurants[] = $rest_info;
     }
     $handle = fopen("restaurants_list.csv", "wb");
@@ -41,7 +41,7 @@ function write_data_to_csv($params){
     fclose($handle);
     return print_r($restaurants);
 }
-
+print($KEYID);
 write_data_to_csv($PARAMS);
 
 ?>
