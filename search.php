@@ -1,14 +1,14 @@
 <?php
+// 外部ファイルを読み込み、実行する
 require 'vendor/autoload.php';
-
 use GuzzleHttp\Client;
 
 # 初期設定
-$KEYID = "";
-$HIT_PER_PAGE = 100;
-$PREF = "PREF13";
-$FREEWORD_CONDITION = 1;
-$FREEWORD = "渋谷駅 " . $_POST['search'];
+$KEYID = ""; // アクセスキーをいれている
+$HIT_PER_PAGE = 100; // 取得する件数をいれている
+$PREF = "PREF13"; // 都道府県をいれている
+$FREEWORD_CONDITION = 1; // AND検索を設定
+$FREEWORD = "渋谷駅 " . $_POST['search']; // フリーワード検索の中身を設定、$_POSTは
 
 $PARAMS = array("keyid"=> $KEYID, "hit_per_page"=>$HIT_PER_PAGE, "pref"=>$PREF, "freeword_condition"=>$FREEWORD_CONDITION, "freeword"=>$FREEWORD);
 
