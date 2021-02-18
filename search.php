@@ -8,14 +8,16 @@ $KEYID = ""; // アクセスキーをいれている
 $HIT_PER_PAGE = 100; // 取得する件数をいれている
 $PREF = "PREF13"; // 都道府県をいれている
 $FREEWORD_CONDITION = 1; // AND検索を設定
-$FREEWORD = "渋谷駅 " . $_POST['search']; // フリーワード検索の中身を設定、$_POSTは
+$FREEWORD = "渋谷駅 " . $_POST['search']; // フリーワード検索の中身を設定、$_POSTによりフォームの送受信をする
 
+// 連想配列により変数をパラメータに格納している
 $PARAMS = array("keyid"=> $KEYID, "hit_per_page"=>$HIT_PER_PAGE, "pref"=>$PREF, "freeword_condition"=>$FREEWORD_CONDITION, "freeword"=>$FREEWORD);
 
+// 変数$paramsをcsv形式にして出力
 function write_data_to_csv($params){
 
-    $restaurants = [["名称","住所","営業日","電話番号"]];
-    $client = new Client();
+    $restaurants = [["名称","住所","営業日","電話番号"]]; // csvのヘッダの部分を設定
+    $client = new Client(); // インスタンス生成
     try{
         $json_res = $client->request('GET', "https://api.gnavi.co.jp/RestSearchAPI/v3/", ['query' => $params])->getBody();
     }catch(Exception $e){
