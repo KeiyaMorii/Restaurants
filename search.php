@@ -34,7 +34,7 @@ function write_data_to_csv($params){
         $rest_info = [$restaurant["name"],$restaurant["address"],$restaurant["opentime"],$restaurant["tel"],$restaurant["image_url"]["shop_image1"]];
         $restaurants[] = $rest_info;
     }
-    $handle = fopen("restaurants_list.csv", "wb");
+    $handle = fopen("restaurants_list.csv", "wb"); // wモードで開く(Windowsの場合、バイナリモードで開く場合には「b」を追加する必要がある)
 
     foreach ($restaurants as $values){
         fputcsv($handle, $values);
